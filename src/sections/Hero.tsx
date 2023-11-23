@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, ShoeCard } from '../components';
 import { arrowRight } from '../assets/icons';
 import { shoes, statistics } from '../constants';

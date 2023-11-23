@@ -1,6 +1,6 @@
 interface ButtonProps {
   label: string;
-  iconUrl: string;
+  iconUrl?: string;
   backgroundColor?: string;
   textColor?: string;
   borderColor?: string;
@@ -24,12 +24,12 @@ const Button = ({
   } rounded-full ${fullWidth && 'w-full'}
   `}
   >
-    {label}{' '}
+    {label}
     {iconUrl && (
       <img
         src={iconUrl}
         alt='button icon'
-        className='ml-2 rounded-full w-5 h-5'
+        className='ml-2 rounded-full bg-white w-5 h-5'
       />
     )}
   </button>
