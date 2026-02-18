@@ -3,9 +3,11 @@ import { products } from '../constants';
 import { Nav, Button, PopularProductCard } from '../components';
 import { Footer } from '../sections';
 import { star, arrowRight } from '../assets/icons';
+import { useCart } from '../context/CartContext';
 
 const ProductDetails = () => {
     const { slug } = useParams();
+    const { addToCart } = useCart();
     const product = products.find((p) => p.slug === slug);
 
     if (!product) {
@@ -57,7 +59,11 @@ const ProductDetails = () => {
                         </p>
 
                         <div className='mt-10 flex flex-wrap gap-4'>
-                            <Button label='Add to cart' iconUrl={arrowRight} />
+                            <Button
+                                label='Add to cart'
+                                iconUrl={arrowRight}
+                                onClick={() => addToCart(product)}
+                            />
                         </div>
                     </div>
                 </div>
