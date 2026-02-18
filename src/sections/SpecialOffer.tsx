@@ -1,6 +1,8 @@
 import { arrowRight } from '../assets/icons';
 import { offer } from '../assets/images';
 import { Button } from '../components';
+import { Link } from 'react-router-dom';
+
 
 const SpecialOffer = () => {
   return (
@@ -29,13 +31,17 @@ const SpecialOffer = () => {
           nothing short of exceptional.
         </p>
         <div className='mt-11 flex flex-wrap gap-4'>
-          <Button label='Shop Now' iconUrl={arrowRight} />
-          <Button
-            label='Learn more'
-            backgroundColor='bg-white dark:bg-dark-card'
-            borderColor='border-slate-gray'
-            textColor='text-slate-gray dark:text-dark-muted'
-          />
+          <Link to='/products'>
+            <Button label='Shop Now' iconUrl={arrowRight} />
+          </Link>
+          <Link to='/about'>
+            <Button
+              label='Learn more'
+              backgroundColor='bg-white dark:bg-dark-card'
+              borderColor='border-slate-gray'
+              textColor='text-slate-gray dark:text-dark-muted'
+            />
+          </Link>
         </div>
       </div>
     </section>

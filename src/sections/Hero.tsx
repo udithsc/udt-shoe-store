@@ -3,6 +3,8 @@ import { Button, ShoeCard } from '../components';
 import { arrowRight } from '../assets/icons';
 import { shoes, statistics } from '../constants';
 import { bigShoe1 } from '../assets/images';
+import { Link } from 'react-router-dom';
+
 
 const Hero = () => {
   const [bigShowImg, setBigShowImg] = useState(bigShoe1);
@@ -27,7 +29,10 @@ const Hero = () => {
           Discover stylish UDT arrivals, quality comfort, and innovation for
           your active life.
         </p>
-        <Button label='Shop now' iconUrl={arrowRight} />
+        <Link to='/products'>
+          <Button label='Shop now' iconUrl={arrowRight} />
+        </Link>
+
 
         <div className='flex justify-start items-start flex-wrap w-full mt-20 gap-8 sm:gap-16'>
           {statistics.map((stat, index) => (
