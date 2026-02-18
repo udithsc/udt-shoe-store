@@ -55,21 +55,29 @@ export const products = [
     imgURL: shoe4,
     name: 'UDT Air Jordan-01',
     price: '$200.20',
+    slug: 'udt-air-jordan-01',
+    description: "The Nike Air Jordan-01 is a classic sneaker that combines style and comfort. Perfect for casual wear or sports activities, it features a durable sole and a breathable upper."
   },
   {
     imgURL: shoe5,
     name: 'UDT Air Jordan-10',
     price: '$210.20',
+    slug: 'udt-air-jordan-10',
+    description: "Step up your game with the Nike Air Jordan-10. Designed for performance, this shoe offers superior cushioning and support for all-day wear."
   },
   {
     imgURL: shoe6,
     name: 'UDT Air Jordan-100',
     price: '$220.20',
+    slug: 'udt-air-jordan-100',
+    description: "Experience the future of footwear with the Nike Air Jordan-100. Innovative design meets premium materials for a shoe that stands out from the crowd."
   },
   {
     imgURL: shoe7,
     name: 'UDT Air Jordan-001',
     price: '$230.20',
+    slug: 'udt-air-jordan-001',
+    description: "The Nike Air Jordan-001 is a timeless classic. With its sleek silhouette and iconic branding, it's a must-have for any sneakerhead."
   },
 ];
 
