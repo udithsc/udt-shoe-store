@@ -12,9 +12,9 @@ const ProductDetails = () => {
 
     if (!product) {
         return (
-            <div className='min-h-screen flex flex-col justify-center items-center px-8 text-center'>
-                <h1 className='text-3xl sm:text-4xl font-palanquin font-bold'>Product Not Found</h1>
-                <p className='mt-4 font-montserrat text-lg text-slate-gray'>
+            <div className='min-h-screen flex flex-col justify-center items-center px-8 text-center bg-white dark:bg-dark-bg transition-colors duration-300'>
+                <h1 className='text-3xl sm:text-4xl font-palanquin font-bold dark:text-dark-text'>Product Not Found</h1>
+                <p className='mt-4 font-montserrat text-lg text-slate-gray dark:text-dark-muted'>
                     The product you are looking for does not exist.
                 </p>
                 <div className='mt-10'>
@@ -27,7 +27,7 @@ const ProductDetails = () => {
     }
 
     return (
-        <main className='relative'>
+        <main className='relative bg-white dark:bg-dark-bg transition-colors duration-300'>
             <Nav />
             <section className='padding-x py-10 w-full'>
                 <div className='max-container flex flex-col lg:flex-row justify-between items-center gap-10 w-full pt-28'>
@@ -41,16 +41,16 @@ const ProductDetails = () => {
                         />
                     </div>
                     <div className='flex flex-1 flex-col w-full'>
-                        <h2 className='font-palanquin text-3xl sm:text-4xl capitalize font-bold lg:max-w-lg'>
+                        <h2 className='font-palanquin text-3xl sm:text-4xl capitalize font-bold lg:max-w-lg dark:text-dark-text'>
                             {product.name}
                         </h2>
                         <div className='mt-6 flex justify-start gap-2.5 items-center'>
                             <img src={star} alt='rating' width={24} height={24} />
-                            <p className='font-montserrat text-xl leading-normal text-slate-gray'>
+                            <p className='font-montserrat text-xl leading-normal text-slate-gray dark:text-dark-muted'>
                                 (4.5)
                             </p>
                         </div>
-                        <p className='mt-4 font-montserrat text-slate-gray text-lg leading-7'>
+                        <p className='mt-4 font-montserrat text-slate-gray dark:text-dark-muted text-lg leading-7'>
                             {product.description ||
                                 'Experience top-notch quality and style with our sought-after selections. Discover a world of comfort, design, and value'}
                         </p>
@@ -70,14 +70,14 @@ const ProductDetails = () => {
             </section>
 
             <section className='padding mt-16 max-container'>
-                <h3 className='font-palanquin text-2xl sm:text-3xl font-bold mb-6'>Similar Products</h3>
+                <h3 className='font-palanquin text-2xl sm:text-3xl font-bold mb-6 dark:text-dark-text'>Similar Products</h3>
                 <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-10'>
                     {products.filter((p) => p.slug !== slug).slice(0, 4).map((product) => (
                         <PopularProductCard key={product.name} product={product} />
                     ))}
                 </div>
             </section>
-            <section className='padding-x padding-t pb-8 bg-black mt-10'>
+            <section className='padding-x padding-t pb-8 bg-black dark:bg-dark-surface mt-10 transition-colors duration-300'>
                 <Footer />
             </section>
         </main>

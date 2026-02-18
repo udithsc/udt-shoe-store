@@ -16,14 +16,14 @@ const Hero = () => {
         <p className='text-xl font-montserrat text-coral-red'>
           Our Summer collection
         </p>
-        <h1 className='mt-10 font-palanquin text-5xl sm:text-6xl xl:text-8xl max-sm:leading-[62px] sm:leading-[76px] xl:leading-[106px] font-bold'>
-          <span className='xl:bg-white xl:whitespace-nowrap relative z-10 pr-10'>
+        <h1 className='mt-10 font-palanquin text-5xl sm:text-6xl xl:text-8xl max-sm:leading-[62px] sm:leading-[76px] xl:leading-[106px] font-bold dark:text-dark-text'>
+          <span className='xl:bg-white dark:xl:bg-dark-bg xl:whitespace-nowrap relative z-10 pr-10 transition-colors duration-300'>
             The New Arrival
           </span>
           <br />
           <span className='text-coral-red inline-block mt-3'>UDT</span> Shoes
         </h1>
-        <p className='font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm'>
+        <p className='font-montserrat text-slate-gray dark:text-dark-muted text-lg leading-8 mt-6 mb-14 sm:max-w-sm'>
           Discover stylish UDT arrivals, quality comfort, and innovation for
           your active life.
         </p>
@@ -32,8 +32,8 @@ const Hero = () => {
         <div className='flex justify-start items-start flex-wrap w-full mt-20 gap-8 sm:gap-16'>
           {statistics.map((stat, index) => (
             <div key={index}>
-              <p className='text-3xl sm:text-4xl font-montserrat font-bold'>{stat.value}</p>
-              <p className='leading-7 font-montserrat text-slate-gray'>
+              <p className='text-3xl sm:text-4xl font-montserrat font-bold dark:text-dark-text'>{stat.value}</p>
+              <p className='leading-7 font-montserrat text-slate-gray dark:text-dark-muted'>
                 {stat.label}
               </p>
             </div>
@@ -41,7 +41,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className='relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center'>
+      <div className='relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary dark:bg-dark-surface bg-hero bg-cover bg-center transition-colors duration-300'>
         <img
           src={bigShowImg}
           alt='show collection'

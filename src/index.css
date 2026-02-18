@@ -2,9 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
 
+/* Use class-based dark mode (.dark on <html>) instead of prefers-color-scheme */
+@variant dark (&:where(.dark, .dark *));
+
 html,
 body {
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @theme {
@@ -18,6 +22,14 @@ body {
   --color-slate-gray: #6D6D6D;
   --color-pale-blue: #F5F6FF;
   --color-white-400: rgba(255, 255, 255, 0.80);
+
+  /* Dark mode colors */
+  --color-dark-bg: #0f0f13;
+  --color-dark-surface: #1a1a24;
+  --color-dark-card: #22222f;
+  --color-dark-border: #2e2e3f;
+  --color-dark-text: #e8e8f0;
+  --color-dark-muted: #9090a8;
 
   /* Shadows */
   --shadow-3xl: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -58,6 +70,13 @@ body {
   --text-8xl--line-height: 106px;
 }
 
+/* Dark mode base styles */
+.dark body,
+.dark {
+  background-color: #0f0f13;
+  color: #e8e8f0;
+}
+
 @layer components {
   .max-container {
     max-width: 1440px;
@@ -65,7 +84,48 @@ body {
   }
 
   .input {
-    @apply flex-1 w-full text-base leading-normal text-slate-gray pl-5 p-5 outline-none sm:border-none border border-slate-gray sm:rounded-none rounded-full;
+    @apply flex-1 w-full text-base leading-normal text-slate-gray pl-5 p-5 outline-none sm:border-none border border-slate-gray sm:rounded-none rounded-full bg-transparent;
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle.light-mode {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  }
+
+  .theme-toggle-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    background: white;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .theme-toggle.dark-mode .theme-toggle-thumb {
+    transform: translateX(24px);
+  }
+
+  .theme-toggle.light-mode .theme-toggle-thumb {
+    transform: translateX(0px);
   }
 }
 

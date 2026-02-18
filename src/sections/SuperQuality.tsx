@@ -8,16 +8,16 @@ const SuperQuality = () => {
       className='flex justify-between items-center max-lg:flex-col gap-10 w-full max-container'
     >
       <div className='flex flex-1 flex-col'>
-        <h2 className='font-palanquin capitalize text-4xl lg:max-w-lg font-bold'>
+        <h2 className='font-palanquin capitalize text-4xl lg:max-w-lg font-bold dark:text-dark-text'>
           We Provide<span className='text-coral-red'> Super </span>
           <span className='text-coral-red'>Quality</span> Shoes
         </h2>
-        <p className='mt-4 lg:max-w-lg info-text'>
+        <p className='mt-4 lg:max-w-lg info-text dark:text-dark-muted'>
           Ensuring premium comfort and style, our meticulously crafted footwear
           is designed to elevate your experience, providing you with unmatched
           quality, innovation, and a touch of elegance.
         </p>
-        <p className='mt-6 lg:max-w-lg info-text'>
+        <p className='mt-6 lg:max-w-lg info-text dark:text-dark-muted'>
           Our dedication to detail and excellence ensures your satisfaction
         </p>
         <div className='mt-11'>
