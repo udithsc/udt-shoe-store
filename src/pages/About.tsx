@@ -11,19 +11,19 @@ const values = [
         icon: '🎯',
         title: 'Our Mission',
         description:
-            'To deliver premium footwear that blends cutting-edge design with everyday comfort — empowering every step you take.',
+            'Make well-built shoes that are worth buying — good materials, honest pricing, and nothing that falls apart after a month.',
     },
     {
         icon: '👁️',
         title: 'Our Vision',
         description:
-            'To become the most trusted shoe brand globally, known for quality, innovation, and a community-first approach.',
+            'Grow into a brand people actually trust. Not through hype, but by consistently putting out products that hold up.',
     },
     {
         icon: '💎',
         title: 'Our Values',
         description:
-            'Quality, integrity, and customer satisfaction are at the heart of everything we do. We never compromise on excellence.',
+            'Quality and honesty. We\'d rather lose a sale than ship something we\'re not proud of.',
     },
 ];
 
@@ -51,7 +51,7 @@ const About = () => {
                             Built to Last
                         </h1>
                         <p className='mt-6 font-montserrat text-slate-gray dark:text-dark-muted text-lg leading-8 max-w-lg'>
-                            UDT Shoes was founded with a simple belief: everyone deserves footwear that looks great, feels incredible, and stands the test of time. From our humble beginnings to a global community of 250k+ customers, we've never lost sight of that promise.
+                            UDT Shoes started with a straightforward idea: most people just want a shoe that looks decent, fits well, and doesn't fall apart. We've been working on that since day one, and now ship to customers in over 50 countries.
                         </p>
                         <div className='mt-10'>
                             <Link to='/products'>

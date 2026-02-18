@@ -21,14 +21,13 @@ const SpecialOffer = () => {
           <span className='text-coral-red'>Special</span> Offer
         </h2>
         <p className='mt-4 info-text dark:text-dark-muted'>
-          Embark on a shopping journey that redefines your experience with
-          unbeatable deals. From premier selections to incredible savings, we
-          offer unparalleled value that sets us apart.
+          We run regular promotions across the full range — no loyalty points,
+          no hoops to jump through. Just straightforward discounts on shoes
+          worth buying.
         </p>
         <p className='mt-6 info-text dark:text-dark-muted'>
-          Navigate a realm of possibilities designed to fulfill your unique
-          desires, surpassing the loftiest expectations. Your journey with us is
-          nothing short of exceptional.
+          Stock moves fast on sale items. If something catches your eye,
+          it's worth grabbing sooner rather than later.
         </p>
         <div className='mt-11 flex flex-wrap gap-4'>
           <Link to='/products'>

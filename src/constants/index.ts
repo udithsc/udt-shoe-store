@@ -56,28 +56,28 @@ export const products = [
     name: 'UDT Air Jordan-01',
     price: '$200.20',
     slug: 'udt-air-jordan-01',
-    description: "The Nike Air Jordan-01 is a classic sneaker that combines style and comfort. Perfect for casual wear or sports activities, it features a durable sole and a breathable upper."
+    description: "A clean, versatile silhouette that works as well off the court as on it. The Air Jordan-01 has been a go-to since day one — solid build, comfortable fit, holds up well over time."
   },
   {
     imgURL: shoe5,
     name: 'UDT Air Jordan-10',
     price: '$210.20',
     slug: 'udt-air-jordan-10',
-    description: "Step up your game with the Nike Air Jordan-10. Designed for performance, this shoe offers superior cushioning and support for all-day wear."
+    description: "The Air Jordan-10 is built for people who are on their feet all day. Good ankle support, cushioning that actually lasts, and a profile that doesn't look out of place anywhere."
   },
   {
     imgURL: shoe6,
     name: 'UDT Air Jordan-100',
     price: '$220.20',
     slug: 'udt-air-jordan-100',
-    description: "Experience the future of footwear with the Nike Air Jordan-100. Innovative design meets premium materials for a shoe that stands out from the crowd."
+    description: "The Air Jordan-100 pushes things forward a bit — lighter materials, updated sole geometry, and a look that's a bit more modern without going overboard."
   },
   {
     imgURL: shoe7,
     name: 'UDT Air Jordan-001',
     price: '$230.20',
     slug: 'udt-air-jordan-001',
-    description: "The Nike Air Jordan-001 is a timeless classic. With its sleek silhouette and iconic branding, it's a must-have for any sneakerhead."
+    description: "The Air Jordan-001 keeps it simple. Low-profile, clean lines, available in colourways that actually work. If you want one pair that goes with everything, this is it."
   },
 ];
 
@@ -85,18 +85,17 @@ export const services = [
   {
     imgURL: truckFast,
     label: 'Free shipping',
-    subtext: 'Enjoy seamless shopping with our complimentary shipping service.',
+    subtext: 'Free shipping on all orders, no minimum spend.',
   },
   {
     imgURL: shieldTick,
     label: 'Secure Payment',
-    subtext:
-      'Experience worry-free transactions with our secure payment options.',
+    subtext: 'All payments are processed securely. We support cards, PayPal, and bank transfer.',
   },
   {
     imgURL: support,
     label: 'Love to help you',
-    subtext: 'Our dedicated team is here to assist you every step of the way.',
+    subtext: 'Got a question? Reach out — we usually get back within a few hours.',
   },
 ];
 
@@ -106,16 +105,17 @@ export const reviews = [
     customerName: 'Morich Brown',
     rating: 4.5,
     feedback:
-      'The attention to detail and the quality of the product exceeded my expectations. Highly recommended!',
+      'Really happy with these. The quality is noticeably better than what I was buying before, and they arrived faster than expected.',
   },
   {
     imgURL: customer2,
     customerName: 'Lota Mongeskar',
     rating: 4.5,
     feedback:
-      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
+      'Fit is true to size and the sole has held up well after a few months of daily wear. Already ordered another pair.',
   },
 ];
+
 
 export const footerLinks = [
   {

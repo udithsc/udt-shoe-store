@@ -13,12 +13,11 @@ const SuperQuality = () => {
           <span className='text-coral-red'>Quality</span> Shoes
         </h2>
         <p className='mt-4 lg:max-w-lg info-text dark:text-dark-muted'>
-          Ensuring premium comfort and style, our meticulously crafted footwear
-          is designed to elevate your experience, providing you with unmatched
-          quality, innovation, and a touch of elegance.
+          Every pair goes through proper QC before it ships. We use materials
+          that hold up — not just on day one, but after months of actual use.
         </p>
         <p className='mt-6 lg:max-w-lg info-text dark:text-dark-muted'>
-          Our dedication to detail and excellence ensures your satisfaction
+          Comfort and durability aren't trade-offs here. We work on both.
         </p>
         <div className='mt-11'>
           <Button label='View Details' />
