@@ -18,20 +18,17 @@ const ShoeCard = ({
 
   return (
     <div
-      className={`border-2 rounded-xl ${
-        bigShowImg === imgUrl.bigShoe
+      className={`border-2 rounded-xl ${bigShowImg === imgUrl.bigShoe
           ? 'border-coral-red'
           : 'border-transparent'
-      } cursor-pointer max:sm:flex-1`}
+        } cursor-pointer`}
       onClick={handleClick}
     >
-      <div className='flex justify-center items-center bg-card bg-center bg-cover sm:w-40 sm:h-40 rounded-xl max-sm:p-4'>
+      <div className='flex justify-center items-center bg-card bg-center bg-cover w-24 h-24 sm:w-40 sm:h-40 rounded-xl p-2 sm:p-0'>
         <img
           src={imgUrl.thumbnail}
           alt='show collection'
-          width={127}
-          height={103.34}
-          className='object-contain'
+          className='object-contain w-full h-full'
         />
       </div>
     </div>

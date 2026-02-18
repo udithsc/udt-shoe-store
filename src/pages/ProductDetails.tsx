@@ -12,13 +12,13 @@ const ProductDetails = () => {
 
     if (!product) {
         return (
-            <div className='min-h-screen flex flex-col justify-center items-center'>
-                <h1 className='text-4xl font-palanquin font-bold'>Product Not Found</h1>
+            <div className='min-h-screen flex flex-col justify-center items-center px-8 text-center'>
+                <h1 className='text-3xl sm:text-4xl font-palanquin font-bold'>Product Not Found</h1>
                 <p className='mt-4 font-montserrat text-lg text-slate-gray'>
                     The product you are looking for does not exist.
                 </p>
                 <div className='mt-10'>
-                    <Link to="/">
+                    <Link to='/'>
                         <Button label='Back to Home' iconUrl={arrowRight} />
                     </Link>
                 </div>
@@ -30,18 +30,18 @@ const ProductDetails = () => {
         <main className='relative'>
             <Nav />
             <section className='padding-x py-10 w-full'>
-                <div className='max-container flex justify-between items-center max-lg:flex-col gap-10 w-full pt-28'>
-                    <div className='flex-1 flex justify-center items-center'>
+                <div className='max-container flex flex-col lg:flex-row justify-between items-center gap-10 w-full pt-28'>
+                    <div className='flex-1 flex justify-center items-center w-full'>
                         <img
                             src={product.imgURL}
                             alt={product.name}
                             width={570}
                             height={522}
-                            className='object-contain'
+                            className='object-contain w-full max-w-[570px]'
                         />
                     </div>
-                    <div className='flex flex-1 flex-col'>
-                        <h2 className='font-palanquin text-4xl capitalize font-bold lg:max-w-lg'>
+                    <div className='flex flex-1 flex-col w-full'>
+                        <h2 className='font-palanquin text-3xl sm:text-4xl capitalize font-bold lg:max-w-lg'>
                             {product.name}
                         </h2>
                         <div className='mt-6 flex justify-start gap-2.5 items-center'>
@@ -67,12 +67,11 @@ const ProductDetails = () => {
                         </div>
                     </div>
                 </div>
-
             </section>
 
             <section className='padding mt-16 max-container'>
-                <h3 className='font-palanquin text-3xl font-bold mb-6'>Similar Products</h3>
-                <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-14'>
+                <h3 className='font-palanquin text-2xl sm:text-3xl font-bold mb-6'>Similar Products</h3>
+                <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-10'>
                     {products.filter((p) => p.slug !== slug).slice(0, 4).map((product) => (
                         <PopularProductCard key={product.name} product={product} />
                     ))}
@@ -81,7 +80,7 @@ const ProductDetails = () => {
             <section className='padding-x padding-t pb-8 bg-black mt-10'>
                 <Footer />
             </section>
-        </main >
+        </main>
     );
 };
 
