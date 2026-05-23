@@ -17,7 +17,7 @@ const SuperQuality = () => {
           that hold up — not just on day one, but after months of actual use.
         </p>
         <p className='mt-6 lg:max-w-lg info-text dark:text-dark-muted'>
-          Comfort and durability aren't trade-offs here. We work on both.
+          Comfort and durability are not trade-offs here. We work on both.
         </p>
         <div className='mt-11'>
           <Button label='View Details' />

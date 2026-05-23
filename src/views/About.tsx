@@ -3,7 +3,7 @@ import { Footer } from '../sections';
 import { shoe8 } from '../assets/images';
 import { Button } from '../components';
 import { arrowRight } from '../assets/icons';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { statistics } from '../constants';
 
 const values = [
@@ -51,10 +51,10 @@ const About = () => {
                             Built to Last
                         </h1>
                         <p className='mt-6 font-montserrat text-slate-gray dark:text-dark-muted text-lg leading-8 max-w-lg'>
-                            UDT Shoes started with a straightforward idea: most people just want a shoe that looks decent, fits well, and doesn't fall apart. We've been working on that since day one, and now ship to customers in over 50 countries.
+                            UDT Shoes started with a straightforward idea: most people just want a shoe that looks decent, fits well, and does not fall apart. We have been working on that since day one, and now ship to customers in over 50 countries.
                         </p>
                         <div className='mt-10'>
-                            <Link to='/products'>
+                            <Link href='/products'>
                                 <Button label='Shop the Collection' iconUrl={arrowRight} />
                             </Link>
                         </div>
@@ -140,7 +140,7 @@ const About = () => {
                     Browse our full collection and experience the UDT difference.
                 </p>
                 <div className='mt-10 flex justify-center'>
-                    <Link to='/products'>
+                    <Link href='/products'>
                         <Button label='Explore Products' iconUrl={arrowRight} />
                     </Link>
                 </div>

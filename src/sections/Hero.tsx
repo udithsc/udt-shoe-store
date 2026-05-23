@@ -1,9 +1,11 @@
+'use client';
+
 import { useState } from 'react';
 import { Button, ShoeCard } from '../components';
 import { arrowRight } from '../assets/icons';
 import { shoes, statistics } from '../constants';
 import { bigShoe1 } from '../assets/images';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 
 const Hero = () => {
@@ -14,12 +16,12 @@ const Hero = () => {
       id='home'
       className='w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container'
     >
-      <div className='relative xl:w-2/5 flex flex-col justify-center items-start w-full px-8 sm:px-16 xl:px-0 pt-28'>
+      <div className='relative xl:w-2/5 flex flex-col justify-center items-start w-full px-5 sm:px-16 xl:px-0 pt-28'>
         <p className='text-xl font-montserrat text-coral-red'>
           Our Summer collection
         </p>
-        <h1 className='mt-10 font-palanquin text-5xl sm:text-6xl xl:text-8xl max-sm:leading-[62px] sm:leading-[76px] xl:leading-[106px] font-bold dark:text-dark-text'>
-          <span className='xl:bg-white dark:xl:bg-dark-bg xl:whitespace-nowrap relative z-10 pr-10 transition-colors duration-300'>
+        <h1 className='mt-8 sm:mt-10 font-palanquin text-5xl sm:text-6xl xl:text-8xl max-sm:leading-[62px] sm:leading-[76px] xl:leading-[106px] font-bold dark:text-dark-text'>
+          <span className='xl:bg-white dark:xl:bg-dark-bg xl:whitespace-nowrap relative z-10 xl:pr-10 transition-colors duration-300'>
             The New Arrival
           </span>
           <br />
@@ -29,12 +31,12 @@ const Hero = () => {
           Discover stylish UDT arrivals, quality comfort, and innovation for
           your active life.
         </p>
-        <Link to='/products'>
+        <Link href='/products'>
           <Button label='Shop now' iconUrl={arrowRight} />
         </Link>
 
 
-        <div className='flex justify-start items-start flex-wrap w-full mt-20 gap-8 sm:gap-16'>
+        <div className='flex justify-start items-start flex-wrap w-full mt-14 sm:mt-20 gap-8 sm:gap-16'>
           {statistics.map((stat, index) => (
             <div key={index}>
               <p className='text-3xl sm:text-4xl font-montserrat font-bold dark:text-dark-text'>{stat.value}</p>
@@ -46,7 +48,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className='relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary dark:bg-dark-surface bg-hero bg-cover bg-center transition-colors duration-300'>
+      <div className='relative flex-1 flex justify-center items-center min-h-[420px] xl:min-h-screen max-xl:pb-32 max-xl:pt-16 bg-primary dark:bg-dark-surface bg-hero bg-cover bg-center transition-colors duration-300'>
         <img
           src={bigShowImg}
           alt='show collection'
@@ -54,7 +56,7 @@ const Hero = () => {
           height={502}
           className='object-contain relative z-10 w-full max-w-[610px] px-4 xl:px-0'
         />
-        <div className='flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-4 flex-wrap justify-center sm:justify-start'>
+        <div className='absolute bottom-6 left-0 right-0 flex flex-wrap justify-center gap-4 px-4 sm:left-[10%] sm:right-auto sm:justify-start sm:gap-6 xl:-bottom-[5%]'>
           {shoes.map((image, index) => (
             <div key={index}>
               <ShoeCard

@@ -1,7 +1,7 @@
 import { copyrightSign } from '../assets/icons';
 import { footerLogo } from '../assets/images';
 import { footerLinks, socialMedia } from '../constants';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 // Map footer link names to internal routes where applicable
 const internalRoutes: Record<string, string> = {
@@ -23,7 +23,7 @@ const Footer = () => {
     <footer className='max-container'>
       <div className='flex justify-between items-start gap-20 flex-wrap max-lg:flex-col'>
         <div className='flex flex-col items-start'>
-          <Link to='/'>
+          <Link href='/'>
             <img
               src={footerLogo}
               alt='logo'
@@ -62,7 +62,7 @@ const Footer = () => {
                       key={link.name}
                     >
                       {internalHref ? (
-                        <Link to={internalHref}>{link.name}</Link>
+                        <Link href={internalHref}>{link.name}</Link>
                       ) : (
                         <a href={link.link}>{link.name}</a>
                       )}
@@ -85,7 +85,7 @@ const Footer = () => {
           />
           <p>Copyright. All rights reserved</p>
         </div>
-        <Link to='/contact' className='font-montserrat cursor-pointer hover:text-white transition-colors'>
+        <Link href='/contact' className='font-montserrat cursor-pointer hover:text-white transition-colors'>
           Terms &amp; Conditions
         </Link>
       </div>

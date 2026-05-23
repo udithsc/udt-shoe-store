@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Nav } from '../components';
 import { Footer } from '../sections';
@@ -12,9 +14,16 @@ const Products = () => {
     const [activeSort, setActiveSort] = useState('Featured');
     const [searchQuery, setSearchQuery] = useState('');
 
-    const filtered = products.filter((p) =>
-        p.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filtered = products.filter((p) => {
+        const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+        const query = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+            p.name.toLowerCase().includes(query) ||
+            p.description.toLowerCase().includes(query) ||
+            p.category.toLowerCase().includes(query);
+
+        return matchesCategory && matchesSearch;
+    });
 
     const sorted = [...filtered].sort((a, b) => {
         const priceA = parseFloat(a.price.replace('$', ''));
@@ -29,12 +38,12 @@ const Products = () => {
             <Nav />
 
             {/* Hero Banner */}
-            <section className='padding-x pt-36 pb-16 bg-gradient-to-br from-primary to-white dark:from-dark-surface dark:to-dark-bg transition-colors duration-300'>
+            <section className='padding-x pt-32 sm:pt-36 pb-14 sm:pb-16 bg-gradient-to-br from-primary to-white dark:from-dark-surface dark:to-dark-bg transition-colors duration-300'>
                 <div className='max-container'>
                     <p className='font-montserrat text-coral-red text-lg font-semibold tracking-wide uppercase'>
                         Our Collection
                     </p>
-                    <h1 className='mt-3 font-palanquin text-5xl sm:text-6xl font-bold dark:text-dark-text'>
+                    <h1 className='mt-3 font-palanquin text-4xl sm:text-6xl font-bold leading-tight dark:text-dark-text'>
                         Shop <span className='text-coral-red'>All</span> Shoes
                     </h1>
                     <p className='mt-4 font-montserrat text-slate-gray dark:text-dark-muted text-lg max-w-xl'>
@@ -45,7 +54,7 @@ const Products = () => {
 
             {/* Filters & Search */}
             <section className='padding-x py-8 border-b border-gray-100 dark:border-dark-border transition-colors duration-300'>
-                <div className='max-container flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center'>
+                <div className='max-container flex flex-col gap-6 lg:flex-row lg:justify-between lg:items-start'>
                     {/* Category Pills */}
                     <div className='flex flex-wrap gap-3'>
                         {categories.map((cat) => (
@@ -63,8 +72,8 @@ const Products = () => {
                     </div>
 
                     {/* Search + Sort */}
-                    <div className='flex flex-col sm:flex-row gap-3 w-full sm:w-auto'>
-                        <div className='relative'>
+                    <div className='flex w-full flex-col gap-3 sm:flex-row lg:w-auto'>
+                        <div className='relative w-full sm:w-auto'>
                             <span className='absolute left-4 top-1/2 -translate-y-1/2 text-slate-gray dark:text-dark-muted'>
                                 🔍
                             </span>
@@ -73,13 +82,13 @@ const Products = () => {
                                 placeholder='Search shoes...'
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className='pl-10 pr-5 py-2.5 rounded-full border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card font-montserrat text-sm text-slate-gray dark:text-dark-muted outline-none focus:border-coral-red transition-colors w-full sm:w-56'
+                                className='w-full pl-10 pr-5 py-2.5 rounded-full border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card font-montserrat text-sm text-slate-gray dark:text-dark-muted outline-none focus:border-coral-red transition-colors sm:w-64'
                             />
                         </div>
                         <select
                             value={activeSort}
                             onChange={(e) => setActiveSort(e.target.value)}
-                            className='px-5 py-2.5 rounded-full border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card font-montserrat text-sm text-slate-gray dark:text-dark-muted outline-none focus:border-coral-red transition-colors cursor-pointer'
+                            className='w-full px-5 py-2.5 rounded-full border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card font-montserrat text-sm text-slate-gray dark:text-dark-muted outline-none focus:border-coral-red transition-colors cursor-pointer sm:w-auto'
                         >
                             {sortOptions.map((opt) => (
                                 <option key={opt} value={opt}>{opt}</option>
@@ -91,9 +100,12 @@ const Products = () => {
 
             {/* Product Grid */}
             <section className='padding max-container'>
-                <div className='flex justify-between items-center mb-8'>
+                <div className='flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center mb-8'>
                     <p className='font-montserrat text-slate-gray dark:text-dark-muted text-sm'>
                         Showing <span className='font-semibold text-coral-red'>{sorted.length}</span> products
+                    </p>
+                    <p className='font-montserrat text-slate-gray dark:text-dark-muted text-sm'>
+                        Filter: <span className='font-semibold text-coral-red'>{activeCategory}</span>
                     </p>
                 </div>
 
@@ -112,7 +124,7 @@ const Products = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-8 gap-12'>
+                    <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4'>
                         {sorted.map((product) => (
                             <PopularProductCard key={product.slug} product={product} />
                         ))}

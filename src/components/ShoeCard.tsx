@@ -1,3 +1,5 @@
+'use client';
+
 interface ShoeCardProps {
   imgUrl: {
     thumbnail: string;

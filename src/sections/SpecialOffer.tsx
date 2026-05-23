@@ -1,7 +1,7 @@
 import { arrowRight } from '../assets/icons';
 import { offer } from '../assets/images';
 import { Button } from '../components';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 
 const SpecialOffer = () => {
@@ -27,13 +27,13 @@ const SpecialOffer = () => {
         </p>
         <p className='mt-6 info-text dark:text-dark-muted'>
           Stock moves fast on sale items. If something catches your eye,
-          it's worth grabbing sooner rather than later.
+          it is worth grabbing sooner rather than later.
         </p>
         <div className='mt-11 flex flex-wrap gap-4'>
-          <Link to='/products'>
+          <Link href='/products'>
             <Button label='Shop Now' iconUrl={arrowRight} />
           </Link>
-          <Link to='/about'>
+          <Link href='/about'>
             <Button
               label='Learn more'
               backgroundColor='bg-white dark:bg-dark-card'

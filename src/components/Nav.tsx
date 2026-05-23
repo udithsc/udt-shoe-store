@@ -1,18 +1,22 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { headerLogo, headerLogoDark } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants';
-import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCart } from '../context/CartContext';
 import { useTheme } from '../context/ThemeContext';
 
 const Nav = () => {
   const { cartCount } = useCart();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, isThemeReady, toggleTheme } = useTheme();
+  const displayTheme = isThemeReady ? theme : 'light';
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname() ?? '/';
+  const router = useRouter();
 
   // Add background to nav when scrolled
   useEffect(() => {
@@ -21,20 +25,19 @@ const Nav = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Keep each route change anchored to the top of the page.
   useEffect(() => {
-    setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.pathname]);
+  }, [pathname]);
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    navigate(href);
+    router.push(href);
   };
 
-  const isHome = location.pathname === '/';
+  const isHome = pathname === '/';
 
-  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  const navLinkClass = (isActive: boolean) =>
     `font-montserrat leading-normal text-lg transition-colors duration-200 relative group ${isActive
       ? 'text-coral-red font-semibold'
       : 'text-slate-gray dark:text-dark-muted hover:text-coral-red dark:hover:text-coral-red'
@@ -51,9 +54,9 @@ const Nav = () => {
     >
       <nav className='flex justify-between items-center max-container'>
         {/* Logo */}
-        <Link to='/' className='flex-shrink-0'>
+        <Link href='/' className='flex-shrink-0'>
           <img
-            src={theme === 'dark' ? headerLogoDark : headerLogo}
+            src={displayTheme === 'dark' ? headerLogoDark : headerLogo}
             alt='UDT Shoes logo'
             width={129}
             height={29}
@@ -65,47 +68,39 @@ const Nav = () => {
         <ul className='flex-1 flex justify-center items-center gap-10 max-lg:hidden'>
           {navLinks.map((link) => (
             <li key={link.label}>
-              <NavLink
-                to={link.href}
-                end={link.href === '/'}
-                className={navLinkClass}
+              <Link
+                href={link.href}
+                className={navLinkClass(link.href === '/' ? pathname === '/' : pathname.startsWith(link.href))}
               >
-                {({ isActive }) => (
-                  <>
-                    {link.label}
-                    {/* Active underline indicator */}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-coral-red rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                        }`}
-                    />
-                  </>
-                )}
-              </NavLink>
+                {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-coral-red rounded-full transition-all duration-300 ${(link.href === '/' ? pathname === '/' : pathname.startsWith(link.href)) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                />
+              </Link>
             </li>
           ))}
           <li>
-            <NavLink
-              to='/cart'
-              className={({ isActive }) =>
-                `font-montserrat leading-normal text-lg font-bold transition-colors ${isActive ? 'text-coral-red' : 'text-coral-red hover:opacity-75'
-                }`
-              }
+            <Link
+              href='/cart'
+              className={`font-montserrat leading-normal text-lg font-bold transition-colors ${pathname === '/cart' ? 'text-coral-red' : 'text-coral-red hover:opacity-75'
+                }`}
             >
               🛒 Cart ({cartCount})
-            </NavLink>
+            </Link>
           </li>
         </ul>
 
         {/* Desktop right: Sign In + Explore + Theme toggle */}
         <div className='flex gap-3 items-center text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
           <Link
-            to='/signin'
+            href='/signin'
             className='px-4 py-2 rounded-full border border-gray-200 dark:border-dark-border text-slate-gray dark:text-dark-muted hover:border-coral-red hover:text-coral-red dark:hover:text-coral-red transition-all text-sm font-semibold'
           >
             Sign In
           </Link>
           <Link
-            to='/products'
+            href='/products'
             className='px-4 py-2 rounded-full bg-coral-red text-white text-sm font-semibold hover:opacity-90 transition-opacity'
           >
             Explore now
@@ -114,32 +109,32 @@ const Nav = () => {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            className={`theme-toggle ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
-            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            aria-label={`Switch to ${displayTheme === 'light' ? 'dark' : 'light'} mode`}
+            className={`theme-toggle ${displayTheme === 'light' ? 'light-mode' : 'dark-mode'}`}
+            title={`Switch to ${displayTheme === 'light' ? 'dark' : 'light'} mode`}
           >
-            <span className='theme-toggle-thumb'>
-              {theme === 'light' ? '☀️' : '🌙'}
+            <span className='theme-toggle-thumb' suppressHydrationWarning>
+              {displayTheme === 'light' ? '☀️' : '🌙'}
             </span>
           </button>
         </div>
 
         {/* Mobile: cart + theme toggle + hamburger */}
         <div className='hidden max-lg:flex gap-3 items-center'>
-          <NavLink
-            to='/cart'
+          <Link
+            href='/cart'
             className='font-montserrat leading-normal text-base font-bold text-coral-red'
           >
             🛒 ({cartCount})
-          </NavLink>
+          </Link>
 
           <button
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            className={`theme-toggle ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
+            aria-label={`Switch to ${displayTheme === 'light' ? 'dark' : 'light'} mode`}
+            className={`theme-toggle ${displayTheme === 'light' ? 'light-mode' : 'dark-mode'}`}
           >
-            <span className='theme-toggle-thumb'>
-              {theme === 'light' ? '☀️' : '🌙'}
+            <span className='theme-toggle-thumb' suppressHydrationWarning>
+              {displayTheme === 'light' ? '☀️' : '🌙'}
             </span>
           </button>
 
@@ -163,7 +158,7 @@ const Nav = () => {
             <button
               key={link.label}
               onClick={() => handleNavClick(link.href)}
-              className={`w-full text-left font-montserrat text-lg py-3 px-4 rounded-xl transition-colors ${location.pathname === link.href
+              className={`w-full text-left font-montserrat text-lg py-3 px-4 rounded-xl transition-colors ${pathname === link.href
                 ? 'text-coral-red bg-red-50 dark:bg-dark-card font-semibold'
                 : 'text-slate-gray dark:text-dark-muted hover:text-coral-red hover:bg-gray-50 dark:hover:bg-dark-card'
                 }`}

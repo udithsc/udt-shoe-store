@@ -1,5 +1,8 @@
+'use client';
+
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { headerLogo, headerLogoDark } from '../assets/images';
 import { Button } from '../components';
 import { useTheme } from '../context/ThemeContext';
@@ -8,8 +11,9 @@ const SignIn = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
     const [error, setError] = useState('');
-    const navigate = useNavigate();
-    const { theme, toggleTheme } = useTheme();
+    const router = useRouter();
+    const { theme, isThemeReady, toggleTheme } = useTheme();
+    const displayTheme = isThemeReady ? theme : 'light';
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -18,8 +22,7 @@ const SignIn = () => {
             setError('Passwords do not match.');
             return;
         }
-        // Simulate auth — navigate home on success
-        navigate('/');
+        router.push('/');
     };
 
     const inputClass =
@@ -31,16 +34,16 @@ const SignIn = () => {
             <button
                 onClick={toggleTheme}
                 aria-label='Toggle theme'
-                className={`theme-toggle fixed top-6 right-6 z-50 ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
+                className={`theme-toggle fixed top-6 right-6 z-50 ${displayTheme === 'light' ? 'light-mode' : 'dark-mode'}`}
             >
-                <span className='theme-toggle-thumb'>{theme === 'light' ? '☀️' : '🌙'}</span>
+                <span className='theme-toggle-thumb' suppressHydrationWarning>{displayTheme === 'light' ? '☀️' : '🌙'}</span>
             </button>
 
             <div className='w-full max-w-md'>
                 {/* Logo */}
                 <div className='flex justify-center mb-8'>
-                    <Link to='/'>
-                        <img src={theme === 'dark' ? headerLogoDark : headerLogo} alt='UDT Shoes' className='h-8 object-contain' />
+                    <Link href='/'>
+                        <img src={displayTheme === 'dark' ? headerLogoDark : headerLogo} alt='UDT Shoes' className='h-8 object-contain' />
                     </Link>
                 </div>
 
@@ -165,7 +168,7 @@ const SignIn = () => {
 
                 {/* Back to home */}
                 <p className='text-center mt-6 font-montserrat text-sm text-slate-gray dark:text-dark-muted'>
-                    <Link to='/' className='text-coral-red hover:underline font-semibold'>
+                    <Link href='/' className='text-coral-red hover:underline font-semibold'>
                         ← Back to Home
                     </Link>
                 </p>

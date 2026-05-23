@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Nav } from '../components';
 import { Footer } from '../sections';
@@ -73,7 +75,7 @@ const Contact = () => {
                         Get in Touch
                     </p>
                     <h1 className='mt-3 font-palanquin text-5xl sm:text-6xl font-bold dark:text-dark-text'>
-                        We'd Love to <span className='text-coral-red'>Hear</span> From You
+                        We Would Love to <span className='text-coral-red'>Hear</span> From You
                     </h1>
                     <p className='mt-4 font-montserrat text-slate-gray dark:text-dark-muted text-lg max-w-xl mx-auto'>
                         Have a question, feedback, or just want to say hello? Our team is ready to help.
@@ -111,7 +113,7 @@ const Contact = () => {
                             Send Us a <span className='text-coral-red'>Message</span>
                         </h2>
                         <p className='mt-3 font-montserrat text-slate-gray dark:text-dark-muted'>
-                            Fill out the form and we'll get back to you within 24 hours.
+                            Fill out the form and we will get back to you within 24 hours.
                         </p>
 
                         {submitted ? (
@@ -121,7 +123,7 @@ const Contact = () => {
                                     Message Sent!
                                 </h3>
                                 <p className='mt-2 font-montserrat text-slate-gray dark:text-dark-muted'>
-                                    Thank you for reaching out. We'll be in touch shortly.
+                                    Thank you for reaching out. We will be in touch shortly.
                                 </p>
                                 <button
                                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', subject: '', message: '' }); }}

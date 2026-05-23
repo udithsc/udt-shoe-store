@@ -56,6 +56,9 @@ export const products = [
     name: 'UDT Air Jordan-01',
     price: '$200.20',
     slug: 'udt-air-jordan-01',
+    category: 'Casual',
+    stock: 12,
+    sizes: [7, 8, 9, 10, 11],
     description: "A clean, versatile silhouette that works as well off the court as on it. The Air Jordan-01 has been a go-to since day one — solid build, comfortable fit, holds up well over time."
   },
   {
@@ -63,6 +66,9 @@ export const products = [
     name: 'UDT Air Jordan-10',
     price: '$210.20',
     slug: 'udt-air-jordan-10',
+    category: 'Running',
+    stock: 8,
+    sizes: [6, 7, 8, 9, 10],
     description: "The Air Jordan-10 is built for people who are on their feet all day. Good ankle support, cushioning that actually lasts, and a profile that doesn't look out of place anywhere."
   },
   {
@@ -70,6 +76,9 @@ export const products = [
     name: 'UDT Air Jordan-100',
     price: '$220.20',
     slug: 'udt-air-jordan-100',
+    category: 'Sport',
+    stock: 6,
+    sizes: [8, 9, 10, 11, 12],
     description: "The Air Jordan-100 pushes things forward a bit — lighter materials, updated sole geometry, and a look that's a bit more modern without going overboard."
   },
   {
@@ -77,6 +86,9 @@ export const products = [
     name: 'UDT Air Jordan-001',
     price: '$230.20',
     slug: 'udt-air-jordan-001',
+    category: 'Limited Edition',
+    stock: 4,
+    sizes: [7, 8, 9, 10],
     description: "The Air Jordan-001 keeps it simple. Low-profile, clean lines, available in colourways that actually work. If you want one pair that goes with everything, this is it."
   },
 ];
